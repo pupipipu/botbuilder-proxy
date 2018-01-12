@@ -100,6 +100,10 @@ export class OpenIdMetadata {
                     json: true
                 };
 
+                if(this.proxy){
+                  options.proxy = this.proxy;
+                }
+
                 request(options, (err, response, body) => {
                     if (!err && (response.statusCode >= 400 || !body)) {
                         err = new Error("Failed to load Keys: " + response.statusCode);

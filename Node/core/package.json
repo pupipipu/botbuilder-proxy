@@ -2,7 +2,7 @@
   "name": "botbuilder-proxy",
   "author": "Microsoft Corp. -- Modified by Pupipipu",
   "description": "Modified version of BotBuilder Node JS SDK with added proxy settings",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "license": "MIT",
   "keywords": [
     "botbuilder",
@@ -30,6 +30,7 @@
     "request": "^2.69.0",
     "rsa-pem-from-mod-exp": "^0.8.4",
     "sprintf-js": "^1.0.3",
+    "tslib": "^1.8.1",
     "url-join": "^1.1.0"
   },
   "devDependencies": {
@@ -38,6 +39,6 @@
   },
   "scripts": {
     "test": "mocha tests/*.js",
-    "build":"tsc"
+    "build": "tsc"
   }
 }
