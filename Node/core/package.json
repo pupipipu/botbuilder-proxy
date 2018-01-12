@@ -1,0 +1,43 @@
+{
+  "name": "botbuilder-proxy",
+  "author": "Microsoft Corp. -- Modified by Pupipipu",
+  "description": "Modified version of BotBuilder Node JS SDK with added proxy settings",
+  "version": "0.1.1",
+  "license": "MIT",
+  "keywords": [
+    "botbuilder",
+    "botbuilder-proxy",
+    "botbuilder with proxy",
+    "bots",
+    "chatbots"
+  ],
+  "bugs": {
+    "url": "https://github.com/pupipipu/botbuilder-proxy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pupipipu/botbuilder-proxy.git"
+  },
+  "main": "./lib/botbuilder.js",
+  "typings": "./lib/botbuilder.d.ts",
+  "dependencies": {
+    "@types/sprintf-js": "^1.1.0",
+    "async": "^1.5.2",
+    "base64url": "^2.0.0",
+    "chrono-node": "^1.1.3",
+    "jsonwebtoken": "^7.0.1",
+    "promise": "^7.1.1",
+    "request": "^2.69.0",
+    "rsa-pem-from-mod-exp": "^0.8.4",
+    "sprintf-js": "^1.0.3",
+    "url-join": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/url-join": "^0.8.1",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "mocha tests/*.js",
+    "build":"tsc"
+  }
+}
