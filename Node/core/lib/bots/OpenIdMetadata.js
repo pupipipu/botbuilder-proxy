@@ -87,6 +87,9 @@ var OpenIdMetadata = /** @class */ (function () {
                     url: openIdConfig.jwks_uri,
                     json: true
                 };
+                if (_this.proxy) {
+                    options.proxy = _this.proxy;
+                }
                 request(options, function (err, response, body) {
                     if (!err && (response.statusCode >= 400 || !body)) {
                         err = new Error("Failed to load Keys: " + response.statusCode);
