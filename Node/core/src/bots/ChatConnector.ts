@@ -449,7 +449,7 @@ export class ChatConnector implements IConnector, IBotStorage {
     }
 
     public saveData(context: IBotStorageContext, data: IChatConnectorStorageData, callback?: (err: Error) => void): void {
-        console.warn(StateApiDreprecatedMessage);
+        //console.warn(StateApiDreprecatedMessage);
         var list: any[] = [];
         function addWrite(field: string, botData: any, url: string) {
             var hashKey = field + 'Hash';

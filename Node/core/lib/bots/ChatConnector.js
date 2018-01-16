@@ -410,7 +410,7 @@ var ChatConnector = /** @class */ (function () {
     };
     ChatConnector.prototype.saveData = function (context, data, callback) {
         var _this = this;
-        console.warn(StateApiDreprecatedMessage);
+        //console.warn(StateApiDreprecatedMessage);
         var list = [];
         function addWrite(field, botData, url) {
             var hashKey = field + 'Hash';
