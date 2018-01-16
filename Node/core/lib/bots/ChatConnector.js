@@ -323,7 +323,8 @@ var ChatConnector = /** @class */ (function () {
     ChatConnector.prototype.getData = function (context, callback) {
         var _this = this;
         try {
-            console.warn(StateApiDreprecatedMessage);
+            //disable console warn temp
+            //console.warn(StateApiDreprecatedMessage);
             // Build list of read commands
             var root = this.getStoragePath(context.address);
             var list = [];

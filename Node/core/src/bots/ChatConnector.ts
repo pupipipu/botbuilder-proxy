@@ -366,7 +366,8 @@ export class ChatConnector implements IConnector, IBotStorage {
 
     public getData(context: IBotStorageContext, callback: (err: Error, data: IChatConnectorStorageData) => void): void {
         try {
-            console.warn(StateApiDreprecatedMessage);
+            //disable console warn temp
+            //console.warn(StateApiDreprecatedMessage);
 
             // Build list of read commands
             var root = this.getStoragePath(context.address);
