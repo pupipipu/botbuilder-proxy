@@ -605,6 +605,8 @@ var ChatConnector = /** @class */ (function () {
         this.addUserAgent(options);
         this.addAccessToken(options, function (err) {
             if (!err) {
+                //for logging
+                var loggingStart_1 = new Date().toISOString();
                 request(options, function (err, response, body) {
                     if (!err) {
                         switch (response.statusCode) {
@@ -630,6 +632,16 @@ var ChatConnector = /** @class */ (function () {
                     }
                     else {
                         callback(err, null, null);
+                    }
+                    //if logging func passed
+                    if (_this.settings.logFunc) {
+                        _this.settings.logFunc({
+                            operationName: 'BotFramework',
+                            requestTime: loggingStart_1,
+                            responseTime: new Date().toISOString(),
+                            apiEndpoint: options.url,
+                            errorMessage: err ? err.toString() : ''
+                        });
                     }
                 });
             }
@@ -666,6 +678,8 @@ var ChatConnector = /** @class */ (function () {
             }
         }
         this.addUserAgent(opt);
+        //for logging
+        var loggingStart = new Date().toISOString();
         request(opt, function (err, response, body) {
             if (!err) {
                 if (body && response.statusCode < 300) {
@@ -682,6 +696,16 @@ var ChatConnector = /** @class */ (function () {
             }
             else {
                 cb(err, null);
+            }
+            //if logging func passed
+            if (_this.settings.logFunc) {
+                _this.settings.logFunc({
+                    operationName: 'BotFramework Refresh Token',
+                    requestTime: loggingStart,
+                    responseTime: new Date().toISOString(),
+                    apiEndpoint: opt.url,
+                    errorMessage: err ? err.toString() : ''
+                });
             }
         });
     };

@@ -62,6 +62,8 @@ export interface IChatConnectorSettings {
     stateEndpoint?: string;
     openIdMetadata?: string;
     proxy?:string;
+    //log function, optional
+    logFunc?: (logObject:any) => void;
 }
 
 export interface IChatConnectorEndpoint {
@@ -645,6 +647,10 @@ export class ChatConnector implements IConnector, IBotStorage {
         this.addUserAgent(options);
         this.addAccessToken(options, (err) => {
             if (!err) {
+
+                //for logging
+                let loggingStart = new Date().toISOString();
+
                 request(options, (err, response, body) => {
                     if (!err) {
                         switch (response.statusCode) {
@@ -667,6 +673,17 @@ export class ChatConnector implements IConnector, IBotStorage {
                         }
                     } else {
                         callback(err, null, null);
+                    }
+
+                    //if logging func passed
+                    if(this.settings.logFunc){
+                      this.settings.logFunc({
+                        operationName:'BotFramework',
+                        requestTime:loggingStart,
+                        responseTime:new Date().toISOString(),
+                        apiEndpoint: options.url,
+                        errorMessage: err ? err.toString() : ''
+                      });
                     }
                 });
             } else {
@@ -704,6 +721,10 @@ export class ChatConnector implements IConnector, IBotStorage {
         }
 
         this.addUserAgent(opt);
+
+        //for logging
+        let loggingStart = new Date().toISOString();
+
         request(opt, (err, response, body) => {
             if (!err) {
                 if (body && response.statusCode < 300) {
@@ -718,6 +739,17 @@ export class ChatConnector implements IConnector, IBotStorage {
                 }
             } else {
                 cb(err, null);
+            }
+
+            //if logging func passed
+            if(this.settings.logFunc){
+              this.settings.logFunc({
+                operationName:'BotFramework Refresh Token',
+                requestTime:loggingStart,
+                responseTime:new Date().toISOString(),
+                apiEndpoint: opt.url,
+                errorMessage: err ? err.toString() : ''
+              });
             }
         });
     }
